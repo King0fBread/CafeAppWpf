@@ -24,5 +24,43 @@ namespace CafeApp
         {
             InitializeComponent();
         }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            int authResult = AuthenticateUser(NameTextBox.Text, Int32.Parse(UserTypeIDTextBox.Text));
+            switch (authResult)
+            {
+                case 0:
+                    PageManager.MainFrame.Navigate(new MainMenuPage());
+                    PageManager.MainFrame.RemoveBackEntry();
+                    break;
+                case 1:
+                    MessageBox.Show("Неверный айди!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Console.WriteLine(UserTypeIDTextBox.Text);
+                    UserTypeIDTextBox.Clear();
+                    NameTextBox.Clear();
+                    break;
+                case 2:
+                    MessageBox.Show("Неверное имя!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    UserTypeIDTextBox.Clear();
+                    NameTextBox.Clear();
+                    break;
+            }
+        }
+        private int AuthenticateUser(string userNameInput, int userTypeIDInput)
+        {
+            var context = CafeEntities.GetContext().Users.FirstOrDefault(p => p.UserName == userNameInput);
+            if(context !=null)
+            {
+                
+                if(userTypeIDInput == context.UserTypeID)
+                {
+                    return 0;
+                }
+                //wrong id
+                return 1;
+            }
+            return 2;
+        }
     }
 }

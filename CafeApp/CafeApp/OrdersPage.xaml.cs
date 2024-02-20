@@ -23,6 +23,17 @@ namespace CafeApp
         public OrdersPage()
         {
             InitializeComponent();
+            DGOrders.ItemsSource = CafeEntities.GetContext().Orders.ToList();
+        }
+
+        private void EditOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            PageManager.MainFrame.Navigate(new MainWindow());
         }
     }
 }

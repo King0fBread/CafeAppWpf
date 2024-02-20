@@ -9,6 +9,29 @@
       Title="OrdersPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="95*"></RowDefinition>
+            <RowDefinition Height="354*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="0" Fill="#ffa700"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+            <Button Name="MainMenu" Content="&lt;" Margin="15,0,280,0" Height="50" Width="50" Background="#ffc24f" FontSize="30" FontWeight="Bold" BorderThickness="0" Padding="0,0,0,8" Foreground="White" Click="MainMenu_Click"></Button>
+            <TextBlock VerticalAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="White">ЗАКАЗЫ</TextBlock>
+        </StackPanel>
+        <DataGrid Grid.Row="1" Name="DGOrders" AutoGenerateColumns="False" Width="auto" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="OrderID" Binding="{Binding OrderID}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="UserID" Binding="{Binding UserID}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="OrderDate" Binding="{Binding OrderDate}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="TotalAmount" Binding="{Binding TotalAmount}" Width="*"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="EditOrder" Click="EditOrder_Click" Background="#ffc24f" Foreground="White" FontSize="15" FontWeight="Bold"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

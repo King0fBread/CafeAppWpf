@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace CafeApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ShiftsPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ShiftsPage : Page
     {
-        public MainWindow()
+        public ShiftsPage()
         {
             InitializeComponent();
-            MainFrame.Navigate(new LoginPage());
-            PageManager.MainFrame = MainFrame;
-            PageManager.MainFrame.JournalOwnership = JournalOwnership.OwnsJournal;
-            PageManager.MainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
         }
-
     }
 }

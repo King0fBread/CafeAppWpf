@@ -15,9 +15,17 @@ namespace CafeApp
     
     public partial class CafeEntities : DbContext
     {
+        private static CafeEntities _instance;
         public CafeEntities()
             : base("name=CafeEntities")
         {
+        }
+        public static CafeEntities GetContext()
+        {
+            if (_instance == null)
+                _instance = new CafeEntities();
+
+            return _instance;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

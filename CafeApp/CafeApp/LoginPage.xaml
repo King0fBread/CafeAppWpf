@@ -23,7 +23,7 @@
 
             <Button Content="LOGIN" Width="100" Height="40" Margin="20" 
                     Canvas.Left="150" Canvas.Top="200"
-                    HorizontalAlignment="Center" Background="#ffa700" FontWeight="Bold" FontSize="20"/>
+                    HorizontalAlignment="Center" Background="#ffa700" FontWeight="Bold" FontSize="20" Name="Login" Click="Login_Click"/>
         </StackPanel>
     </Canvas>
 </Page>
