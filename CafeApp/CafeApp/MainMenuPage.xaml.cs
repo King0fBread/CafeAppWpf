@@ -45,7 +45,7 @@ namespace CafeApp
 
         private void Shifts_Click(object sender, RoutedEventArgs e)
         {
-            PageManager.MainFrame.Navigate(new ShiftsPage());
+            PageManager.MainFrame.Navigate(new DishesPage());
             PageManager.MainFrame.RemoveBackEntry();
         }
     }

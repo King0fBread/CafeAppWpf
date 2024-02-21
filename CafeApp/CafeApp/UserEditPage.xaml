@@ -1,0 +1,27 @@
+﻿<Page x:Class="CafeApp.UserEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CafeApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UserEditPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="183*"></RowDefinition>
+            <RowDefinition Height="179*"></RowDefinition>
+            <RowDefinition Height="87*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="25">ИМЯ РАБОТНИКА</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="25">АЙДИ РАБОТНИКА</TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="UserNameBox" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="50" FontSize="25" FontWeight="Bold"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="UserIDBox" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="50" FontSize="25" FontWeight="Bold"></TextBox>
+        <Button Grid.Row="2" Grid.Column="2" Content="Продолжить" Name="EditUser" Click="EditUser_Click" Background="#ffc24f" Foreground="White" FontSize="30" FontWeight="Bold" Height="50" Width="300"></Button>
+    </Grid>
+</Page>

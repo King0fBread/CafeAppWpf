@@ -24,5 +24,25 @@ namespace CafeApp
         {
             InitializeComponent();
         }
+
+        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            PageManager.MainFrame.Navigate(new MainMenuPage());
+            PageManager.MainFrame.RemoveBackEntry();
+        }
+
+        private void EditUser_Click(object sender, RoutedEventArgs e)
+        {
+            PageManager.MainFrame.Navigate(new UserEditPage((sender as Button).DataContext as User));
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+            {
+                CafeEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGUsers.ItemsSource = CafeEntities.GetContext().Users.ToList();
+            }
+        }
     }
 }

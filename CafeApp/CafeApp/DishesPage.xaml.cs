@@ -16,13 +16,20 @@ using System.Windows.Shapes;
 namespace CafeApp
 {
     /// <summary>
-    /// Interaction logic for ShiftsPage.xaml
+    /// Interaction logic for DishesPage.xaml
     /// </summary>
-    public partial class ShiftsPage : Page
+    public partial class DishesPage : Page
     {
-        public ShiftsPage()
+        public DishesPage()
         {
             InitializeComponent();
+            DGDishes.ItemsSource = CafeEntities.GetContext().Dishes.ToList();
+        }
+
+        private void MainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            PageManager.MainFrame.Navigate(new MainMenuPage());
+            PageManager.MainFrame.RemoveBackEntry();
         }
     }
 }

@@ -6,9 +6,31 @@
       xmlns:local="clr-namespace:CafeApp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="UsersPage">
+      Title="UsersPage" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="95*"></RowDefinition>
+            <RowDefinition Height="354*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.Row="0" Fill="#ffa700"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+            <Button Name="MainMenu" Content="&lt;" Margin="15,0,250,0" Height="50" Width="50" Background="#ffc24f" FontSize="30" FontWeight="Bold" BorderThickness="0" Padding="0,0,0,8" Foreground="White" Click="MainMenu_Click"></Button>
+            <TextBlock VerticalAlignment="Center" FontSize="30" FontWeight="Bold" Foreground="White">РАБОТНИКИ</TextBlock>
+        </StackPanel>
+        <DataGrid Grid.Row="1" Name="DGUsers" AutoGenerateColumns="False" Width="auto" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="UserID" Binding="{Binding UserID}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="UserName" Binding="{Binding UserName}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="UserTypeID" Binding="{Binding UserTypeID}" Width="*"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать" Name="EditUser" Click="EditUser_Click" Background="#ffc24f" Foreground="White" FontSize="15" FontWeight="Bold"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

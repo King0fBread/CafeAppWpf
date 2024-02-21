@@ -33,7 +33,8 @@ namespace CafeApp
 
         private void MainMenu_Click(object sender, RoutedEventArgs e)
         {
-            PageManager.MainFrame.Navigate(new MainWindow());
+            PageManager.MainFrame.Navigate(new MainMenuPage());
+            PageManager.MainFrame.RemoveBackEntry();
         }
     }
 }
