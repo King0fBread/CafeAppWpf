@@ -20,9 +20,13 @@ namespace CafeApp
     /// </summary>
     public partial class UsersPage : Page
     {
+        private List<User> _availableUsers;
         public UsersPage()
         {
             InitializeComponent();
+
+            _availableUsers = CafeEntities.GetContext().Users.ToList();
+            DGUsers.ItemsSource = _availableUsers;
         }
 
         private void MainMenu_Click(object sender, RoutedEventArgs e)
@@ -38,16 +42,29 @@ namespace CafeApp
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if(Visibility == Visibility.Visible)
-            {
-                CafeEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DGUsers.ItemsSource = CafeEntities.GetContext().Users.ToList();
-            }
+            //if(Visibility == Visibility.Visible)
+            //{
+            //    CafeEntities.GetContext().Users.ToList();
+            //    DGUsers.ItemsSource = CafeEntities.GetContext().Users.ToList();
+            //}
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
         {
             PageManager.MainFrame.Navigate(new UserEditPage(null));
+        }
+
+        private void DeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            var usersForRemoval = DGUsers.SelectedItems.Cast<User>().ToList();
+            if (MessageBox.Show("Удалить работника?", "Подтвердите удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                CafeEntities.GetContext().Users.RemoveRange(usersForRemoval);
+                CafeEntities.GetContext().SaveChanges();
+                MessageBox.Show("Данные удалены!");
+
+                DGUsers.ItemsSource = CafeEntities.GetContext().Users.ToList();
+            }
         }
     }
 }

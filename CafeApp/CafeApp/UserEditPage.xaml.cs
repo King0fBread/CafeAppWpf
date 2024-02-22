@@ -35,7 +35,6 @@ namespace CafeApp
 
         private void EditUser_Click(object sender, RoutedEventArgs e)
         {
-            CafeEntities dbContext = CafeEntities.GetContext();
             //StringBuilder errors = new StringBuilder();
             //if (string.IsNullOrWhiteSpace(_currentUser.UserName) || string.IsNullOrWhiteSpace(_currentUser.UserTypeID.ToString()))
             //    errors.Append("Указаны не все данные");
@@ -48,13 +47,15 @@ namespace CafeApp
             if (_currentUser.UserID == 0)
             {
                 User user = new User(UserNameBox.Text, int.Parse(UserIDBox.Text));
-                dbContext.Users.Add(user);
-                dbContext.SaveChanges();
-
-                PageManager.MainFrame.Navigate(new UsersPage());
-                PageManager.MainFrame.RemoveBackEntry();
-
+                CafeEntities.GetContext().Users.Add(user);
             }
+
+            CafeEntities.GetContext().SaveChanges();
+
+            MessageBox.Show("Успешно изменено");
+
+            PageManager.MainFrame.Navigate(new UsersPage());
+            PageManager.MainFrame.RemoveBackEntry();
 
 
         }
