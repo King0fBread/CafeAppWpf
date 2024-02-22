@@ -35,28 +35,25 @@ namespace CafeApp
 
         private void EditUser_Click(object sender, RoutedEventArgs e)
         {
-            StringBuilder errors = new StringBuilder();
-            if (string.IsNullOrWhiteSpace(_currentUser.UserName) || string.IsNullOrWhiteSpace(_currentUser.UserTypeID.ToString()))
-                errors.Append("Указаны не все данные");
+            CafeEntities dbContext = CafeEntities.GetContext();
+            //StringBuilder errors = new StringBuilder();
+            //if (string.IsNullOrWhiteSpace(_currentUser.UserName) || string.IsNullOrWhiteSpace(_currentUser.UserTypeID.ToString()))
+            //    errors.Append("Указаны не все данные");
 
-            if(errors.Length > 0)
+            //if(errors.Length > 0)
+            //{
+            //    MessageBox.Show(errors.ToString());
+            //    return;
+            //}
+            if (_currentUser.UserID == 0)
             {
-                MessageBox.Show(errors.ToString());
-                return;
-            }
-            if(_currentUser.UserID == 0)
-            {
-                CafeEntities.GetContext().Users.Add(_currentUser);
-            }
-            try
-            {
-                CafeEntities.GetContext().SaveChanges();
-                MessageBox.Show("Информация сохранена!");
-                PageManager.MainFrame.GoBack();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                User user = new User(UserNameBox.Text, int.Parse(UserIDBox.Text));
+                dbContext.Users.Add(user);
+                dbContext.SaveChanges();
+
+                PageManager.MainFrame.Navigate(new UsersPage());
+                PageManager.MainFrame.RemoveBackEntry();
+
             }
 
 

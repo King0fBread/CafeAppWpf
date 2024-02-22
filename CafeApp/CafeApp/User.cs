@@ -19,6 +19,11 @@ namespace CafeApp
         {
             this.Orders = new HashSet<Order>();
         }
+        public User(string userName, int userTyeID)
+        {
+            this.UserName = userName;
+            this.UserTypeID = userTyeID;
+        }
     
         public int UserID { get; set; }
         public string UserName { get; set; }

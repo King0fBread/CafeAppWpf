@@ -44,5 +44,10 @@ namespace CafeApp
                 DGUsers.ItemsSource = CafeEntities.GetContext().Users.ToList();
             }
         }
+
+        private void AddUser_Click(object sender, RoutedEventArgs e)
+        {
+            PageManager.MainFrame.Navigate(new UserEditPage(null));
+        }
     }
 }
