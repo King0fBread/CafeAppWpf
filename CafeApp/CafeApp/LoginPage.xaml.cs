@@ -47,7 +47,7 @@ namespace CafeApp
                     break;
             }
         }
-        private int AuthenticateUser(string userNameInput, int userTypeIDInput)
+        public static int AuthenticateUser(string userNameInput, int userTypeIDInput)
         {
             var context = CafeEntities.GetContext().Users.FirstOrDefault(p => p.UserName == userNameInput);
             if(context !=null)
@@ -57,7 +57,6 @@ namespace CafeApp
                 {
                     return 0;
                 }
-                //wrong id
                 return 1;
             }
             return 2;
