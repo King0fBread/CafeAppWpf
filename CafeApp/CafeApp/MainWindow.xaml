@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeApp"
         mc:Ignorable="d"
-        Title="Your Application" Height="450" Width="800"
-        Background="#2a2a2a">
+        Icon="/Assets/coffee.png"
+        Title="CafeApp" Height="450" Width="800"
+        Background="#2a2a2a" ResizeMode="CanMinimize">
 
     <Grid>
         <Frame x:Name="MainFrame" Grid.Row="1"/>

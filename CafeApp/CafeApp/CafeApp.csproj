@@ -200,6 +200,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\coffee.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Cafe.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

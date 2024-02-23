@@ -31,12 +31,12 @@ namespace CafeApp
             switch (authResult)
             {
                 case 0:
+                    MessageBox.Show("Успешный вход!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                     PageManager.MainFrame.Navigate(new MainMenuPage());
                     PageManager.MainFrame.RemoveBackEntry();
                     break;
                 case 1:
                     MessageBox.Show("Неверный айди!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    Console.WriteLine(UserTypeIDTextBox.Text);
                     UserTypeIDTextBox.Clear();
                     NameTextBox.Clear();
                     break;
